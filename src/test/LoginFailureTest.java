@@ -12,20 +12,12 @@ public class LoginFailureTest extends CommonMethods {
         LoginPage login = new LoginPage();
 
         login.userName.sendKeys("tom");
-
         login.password.sendKeys("Super");
-
         login.loginButton.click();
 
-        Thread.sleep(2000);
-
         boolean loginButtonIsPresent = login.loginButton.isDisplayed();
-        Assert.assertTrue(loginButtonIsPresent);
-        System.out.println("Test is passed. You cannot login with invalid credentials");
-
-//        String actualErrorMessageText = login.errorMessage.getText();
-//        String expectedErrorMessageText = "Your username is invalid!";
-//        Assert.assertEquals(actualErrorMessageText, expectedErrorMessageText);
+        Assert.assertTrue(loginButtonIsPresent, "The test is failed");
+        System.out.println("The test is passed. User cannot login with invalid credentials");
 
        tearDown();
     }

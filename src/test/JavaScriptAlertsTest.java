@@ -43,7 +43,7 @@ public class JavaScriptAlertsTest extends CommonMethods {
         String expectedPromptAlertMessage = "You entered: Hello World!";
         String actualPromptAlertMessage = driver.findElement(By.id("result")).getText();
         Assert.assertEquals(actualPromptAlertMessage,expectedPromptAlertMessage);
-        System.out.println("The alert message contains the typed message");
+        System.out.println("The prompt alert message contains the typed message");
 
    tearDown();
     }

@@ -2,6 +2,7 @@ package test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.CommonMethods;
 
@@ -16,15 +17,15 @@ public class OpenInNewTabTest extends CommonMethods {
 
         Set<String> handles = driver.getWindowHandles();
         for(String handle:handles) {
-            driver.switchTo().window(handle);
+            driver.switchTo().window(handle); //switching focus on a new opened tab
         }
-            String title = driver.getTitle();
 
-            if(title.equalsIgnoreCase("New Window")){
-                System.out.println("Test is passed. A new tab is opened with the text New Window");
-            }else {
-                System.out.println("Test is failed");
-            }
+        String actualTitle = driver.getTitle();
+        String expectedTitle = "New Window";
+
+        Assert.assertEquals(actualTitle, expectedTitle, "Test is failed. The text is not displayed in new tab");
+        System.out.println("Test is passed. A new tab is opened with the text 'New Window'");
+
             tearDown();
         }
     }

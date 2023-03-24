@@ -17,7 +17,10 @@ public class DropdownTest extends CommonMethods {
 
         Select select = new Select(dd);
 
+
         select.selectByValue("1");
+
+        //Checking if dropdown is selected by its text
         String actualTextOfFirstOption = select.getFirstSelectedOption().getText();
         String expectedTextOfFirstOption = "Option 1";
         Assert.assertEquals(actualTextOfFirstOption,expectedTextOfFirstOption);

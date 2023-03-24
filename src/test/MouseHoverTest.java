@@ -9,25 +9,26 @@ import utils.CommonMethods;
 import java.util.List;
 @Test
 public class MouseHoverTest extends CommonMethods {
-    public static void main (String[]args){
+    public static void main(String[] args) throws InterruptedException {
         setUp("http://localhost:7080/hovers");
 
         List<WebElement> images = driver.findElements(By.cssSelector("img[alt = 'User Avatar']"));
-        Actions action = new Actions(driver);
-        List<WebElement> texts = driver.findElements(By.xpath("//h5[contains(text(), 'name: ')]"));
+        List<WebElement> additionalInformationTexts = driver.findElements(By.xpath("//h5[contains(text(), 'name: ')]"));
 
-        for(WebElement image:images){
+        Actions action = new Actions(driver);
+
+        //looping through all images and checking if additional information is displayed on each image
+        for (WebElement image : images) {
             action.moveToElement(image).perform();
-            for(WebElement text : texts){
-                if(text.isDisplayed()){
-                    System.out.println("Test is passed. Additional information is displayed for the image");
-                }else{
-                    System.out.println("Test is failed");
+            Thread.sleep(1000);
+            for (WebElement additionalInformationText : additionalInformationTexts) {
+                if (additionalInformationText.isDisplayed()) {
+                    System.out.println("The test is passed. Additional information is displayed for the image");
+                    break;
                 }
-                break;
             }
-            }
-        tearDown();
         }
+        tearDown();
     }
+}
 

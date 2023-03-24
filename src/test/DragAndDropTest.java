@@ -21,8 +21,9 @@ public class DragAndDropTest extends CommonMethods {
         String actualBoxText = colomn1.getText();
         String expectedBoxText = "B";
 
-        Assert.assertEquals(actualBoxText, expectedBoxText);
-        System.out.println("Test is passed");
+        //comparing text on boxes
+        Assert.assertEquals(actualBoxText, expectedBoxText, "The test is failed. The text on element A and is not switched");
+        System.out.println("The test is passed. The text on element A and B is switched");
 
          tearDown();
     }

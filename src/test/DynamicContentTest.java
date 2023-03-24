@@ -2,25 +2,24 @@ package test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.CommonMethods;
 @Test
 public class DynamicContentTest extends CommonMethods {
     public static void main(String[]args) throws InterruptedException {
         setUp("http://localhost:7080/dynamic_content");
-        WebElement content = driver.findElement(By.id("content"));
-        String contentText = content.getText();
 
-        for(int i =0; i<2; i++){
+        //refreshing the webpage 4 times and comparing the content
+        for(int i =0; i<3; i++){
+            WebElement content = driver.findElement(By.id("content"));
+            String contentText = content.getText();
             driver.navigate().refresh();
-            String newContentText = content.getText();
-            if(!contentText.equals(newContentText)){
-                System.out.println("Content is changing");
-            }else{
-                System.out.println("failed");
-            }
+            WebElement newContent = driver.findElement(By.id("content"));
+            String newContentText = newContent.getText();
+            Assert.assertFalse(contentText.equals(newContentText), "The content is not changing");
+                System.out.println("The content is changing");
         }
-tearDown();
-
+       tearDown();
     }
 }

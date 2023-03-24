@@ -17,7 +17,7 @@ public class DynamicLoadingTest extends CommonMethods {
         startButton.click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
-        System.out.println("Test is passed. 'Hello World!' text is displayed");
+        System.out.println("The test is passed. 'Hello World!' text is displayed");
 
         tearDown();
 

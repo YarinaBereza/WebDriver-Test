@@ -11,14 +11,15 @@ public class IframeTest extends CommonMethods {
     public static void main (String[] args){
         setUp("http://localhost:7080/iframe");
 
-        WebElement button = driver.findElement(By.cssSelector("button[class = 'tox-notification__dismiss tox-button tox-button--naked tox-button--icon']"));
-        button.click();
 
-        driver.switchTo().frame("mce_0_ifr");
+        WebElement closeAlertMessageButton = driver.findElement(By.cssSelector("button[class = 'tox-notification__dismiss tox-button tox-button--naked tox-button--icon']"));
+        closeAlertMessageButton.click(); //closing an alert message button to interact with iframe
+
+        driver.switchTo().frame("mce_0_ifr"); //switching focus to frame
 
         WebElement textField = driver.findElement(By.id("tinymce"));
         textField.clear();
-        textField.sendKeys("Hello World!");
+        textField.sendKeys("Hello World!"); //typing text in the text field
 
         String actualText = textField.getText();
         String expectedText = "Hello World!";

@@ -17,12 +17,12 @@ public class ContextMenuTest extends CommonMethods {
             Actions action = new Actions(driver);
             action.contextClick(box).perform();
 
-            Alert alert = driver.switchTo().alert();
+            Alert alert = driver.switchTo().alert(); //switch focus to the alert
             String expectedAlertText = "You selected a context menu";
             String actualAlertText = alert.getText();
 
-            Assert.assertEquals(actualAlertText,expectedAlertText);
-            System.out.println("Test is passed. The alert menu text is displayed");
+            Assert.assertEquals(actualAlertText,expectedAlertText, "The test is failed. The alert menu text is not displayed");
+            System.out.println("The test is passed. The alert menu text is displayed");
 
             alert.accept();
 

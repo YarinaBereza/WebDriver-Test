@@ -13,18 +13,12 @@ public class LoginSuccessTest extends CommonMethods {
         LoginPage login = new LoginPage();
 
         login.userName.sendKeys("tomsmith");
-
         login.password.sendKeys("SuperSecretPassword!");
-
         login.loginButton.click();
 
         boolean logoutButtonIsPresent = login.logoutButton.isDisplayed();
-        Assert.assertTrue(logoutButtonIsPresent);
-        System.out.println("Test is passed. User has logged in with valid credentials");
-
-        //String actualSuccessMessageText = login.successMessage.getText();
-        //String expectedSuccessMessageText = "You logged into a secure area!";
-        //Assert.assertEquals(actualSuccessMessageText, expectedSuccessMessageText);
+        Assert.assertTrue(logoutButtonIsPresent, "The test is failed. User is not able to log in");
+        System.out.println("The test is passed. User has logged in with valid credentials");
 
         tearDown();
     }

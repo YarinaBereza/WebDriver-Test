@@ -12,16 +12,15 @@ public class FloatingMenuTest extends CommonMethods {
     public static void main(String[] args){
         setUp("http://localhost:7080/floating_menu");
 
-        WebElement buttonElement = driver.findElement(By.xpath("//a[contains(text(), 'Elemental')]"));
+        WebElement bottomElement = driver.findElement(By.xpath("//a[contains(text(), 'Elemental')]"));
 
         JavascriptExecutor js =  (JavascriptExecutor) driver;
-
-        js.executeScript("arguments[0].scrollIntoView(false)", buttonElement);
+        js.executeScript("arguments[0].scrollIntoView(false)", bottomElement); //scroll down the page to the element at the bottom
 
         WebElement floatingMenu = driver.findElement(By.id("menu"));
 
         Assert.assertTrue(!floatingMenu.isDisplayed());
-        System.out.println("Test is passed. The floating menu is still displayed");
+        System.out.println("The test is passed. The floating menu is still displayed");
 
         tearDown();
     }
